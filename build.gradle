@@ -49,6 +49,6 @@ jar.enabled=true
 
 //Creating docker image with the help of Buildpacks
 bootBuildImage{
-	imageName=project.name
+	imageName='ultdocker123/'+project.name
 }
 
