@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -25,7 +26,7 @@ public class CardController {
 	CardsServiceConfig cardsConfig;
 	
 	@PostMapping("/myCard")
-	public List<Cards> getCardDetails(@RequestBody Customer customer){
+	public List<Cards> getCardDetails(@RequestHeader("eazybank-correlation-id")String correlationId,@RequestBody Customer customer){
 		List <Cards> cards = cardRepository.findByCustomerId(customer.getCustomerId());
 		
 		if(cards!=null)
